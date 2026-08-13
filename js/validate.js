@@ -24,7 +24,8 @@ export function validateRegister(v) {
   if (v.description.length < 20) e.description = 'Cuenta en pocas líneas de qué trata. Mínimo 20 caracteres.';
   else if (v.description.length > 400) e.description = 'La descripción no puede superar los 400 caracteres.';
 
-  if (v.joinUrl && !URL.test(v.joinUrl)) e.joinUrl = 'Escribe un enlace válido, empezando por https://';
+  if (!v.joinUrl) e.joinUrl = 'El enlace para unirse es obligatorio.';
+  else if (!URL.test(v.joinUrl)) e.joinUrl = 'Escribe un enlace válido, empezando por https://';
 
   if (!v.requestedAreas.length) e.requestedAreas = 'Elige al menos un área de apoyo.';
 

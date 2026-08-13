@@ -11,13 +11,34 @@
 </head>
 <body>
   <header class="navbar">
+    <button class="navbar__toggle" id="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+
     <a href="index.html" class="navbar__brand"><span class="wordmark sheen">ARGYRA</span></a>
-    <nav class="navbar__links">
-      <a href="afiliados.html">Afiliados</a>
-      <a href="laboratorio.html">Laboratorio</a>
+
+    <nav class="navbar__links" id="menu">
+      <p class="eyebrow navbar__group">Argyra</p>
+      <a href="index.html">Inicio</a>
+      <a href="laboratorio.html">El Laboratorio</a>
+
+      <p class="eyebrow navbar__group">Afiliados</p>
+      <a href="afiliados.html">Todos los afiliados</a>
+      <a href="comunidades.html">Comunidades</a>
+      <a href="grupos.html">Grupos</a>
+
+      <p class="eyebrow navbar__group">Seguimiento</p>
+      <a href="progreso.html">En proceso</a>
+      <a href="resultados.html">Resultados</a>
+
+      <p class="eyebrow navbar__group">Tu cuenta</p>
       <a href="solicitar.html">Solicitar apoyo</a>
+      <a href="panel.html">Mi panel</a>
+
+      <div class="navbar__session">
+        <a class="btn btn--primary" data-session-slot href="ingresar.html">Ingresar</a>
+      </div>
     </nav>
-    <a class="navbar__session" data-session-slot href="ingresar.html">Ingresar</a>
   </header>
 
   <main>
@@ -52,15 +73,25 @@
 
         <label class="field">
           <span class="field__label">Enlace para unirse</span>
-          <span class="field__hint">Opcional. Puedes agregarlo o cambiarlo después.</span>
-          <input class="input" name="joinUrl" placeholder="https://chat.whatsapp.com/…" />
+          <span class="field__hint">
+            Obligatorio. Es el enlace de invitación de tu grupo, el que verá la gente en tu
+            ficha. En WhatsApp: Info del grupo → Invitar por enlace → Copiar.
+          </span>
+          <input class="input" name="joinUrl" placeholder="https://chat.whatsapp.com/…" required />
           <span class="field__error" data-error="joinUrl"></span>
+          <span class="field__hint">
+            Puedes salir a buscarlo y volver: lo que escribiste queda guardado en este
+            dispositivo.
+          </span>
         </label>
 
         <div class="field">
           <span class="field__label">¿En qué necesitas apoyo?</span>
-          <span class="field__hint">Esto queda fijo: es el apoyo que Argyra registra en tu ficha.</span>
-          <div class="chips" id="areas"></div>
+          <span class="field__hint">
+            Toca cada área para elegirla. Esto queda fijo: es el apoyo que Argyra registra
+            en tu ficha pública.
+          </span>
+          <div id="areas" class="mt-sm"></div>
           <span class="field__error" data-error="requestedAreas"></span>
         </div>
 
@@ -105,6 +136,9 @@
         <div id="aviso"></div>
 
         <button class="btn btn--primary btn--block mt-md" type="submit" id="enviar">Crear solicitud</button>
+        <button class="btn btn--ghost btn--sm btn--block mt-sm" type="button" id="limpiar">
+          Borrar lo guardado y empezar de nuevo
+        </button>
       </form>
     </section>
   </main>
@@ -113,19 +147,15 @@
     <div class="container footer__inner">
       <p>Argyra — comunidad de comunidades.</p>
       <div class="footer__links">
-        <a href="afiliados.html">Afiliados</a>
+        <a href="comunidades.html">Comunidades</a>
+        <a href="grupos.html">Grupos</a>
+        <a href="progreso.html">En proceso</a>
+        <a href="resultados.html">Resultados</a>
         <a href="laboratorio.html">Laboratorio</a>
         <a href="solicitar.html">Solicitar apoyo</a>
-        <a href="ingresar.html">Ingresar</a>
       </div>
     </div>
   </footer>
-  <nav class="tabbar">
-    <a href="index.html"><span class="tabbar__dot"></span>Argyra</a>
-    <a href="afiliados.html"><span class="tabbar__dot"></span>Afiliados</a>
-    <a href="laboratorio.html"><span class="tabbar__dot"></span>Lab</a>
-    <a href="panel.html"><span class="tabbar__dot"></span>Panel</a>
-  </nav>
 
   <script type="module" src="js/page-registro.js"></script>
 </body>

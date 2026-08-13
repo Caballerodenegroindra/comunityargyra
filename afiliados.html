@@ -5,40 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#090B0F" />
   <title>Afiliados — Argyra</title>
-  <meta name="description" content="Directorio de grupos y comunidades afiliados a Argyra." />
+  <meta name="description" content="Directorio completo de grupos y comunidades afiliados a Argyra." />
   <link rel="icon" type="image/svg+xml" href="assets/img/icon.svg" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header class="navbar">
+    <button class="navbar__toggle" id="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+
     <a href="index.html" class="navbar__brand"><span class="wordmark sheen">ARGYRA</span></a>
-    <nav class="navbar__links">
-      <a href="afiliados.html">Afiliados</a>
-      <a href="laboratorio.html">Laboratorio</a>
+
+    <nav class="navbar__links" id="menu">
+      <p class="eyebrow navbar__group">Argyra</p>
+      <a href="index.html">Inicio</a>
+      <a href="laboratorio.html">El Laboratorio</a>
+
+      <p class="eyebrow navbar__group">Afiliados</p>
+      <a href="afiliados.html">Todos los afiliados</a>
+      <a href="comunidades.html">Comunidades</a>
+      <a href="grupos.html">Grupos</a>
+
+      <p class="eyebrow navbar__group">Seguimiento</p>
+      <a href="progreso.html">En proceso</a>
+      <a href="resultados.html">Resultados</a>
+
+      <p class="eyebrow navbar__group">Tu cuenta</p>
       <a href="solicitar.html">Solicitar apoyo</a>
+      <a href="panel.html">Mi panel</a>
+
+      <div class="navbar__session">
+        <a class="btn btn--primary" data-session-slot href="ingresar.html">Ingresar</a>
+      </div>
     </nav>
-    <a class="navbar__session" data-session-slot href="ingresar.html">Ingresar</a>
   </header>
 
   <main>
     <section class="container section">
       <p class="eyebrow">Directorio</p>
-      <h1 class="mt-sm">Afiliados</h1>
+      <h1 class="mt-sm">Todos los afiliados</h1>
       <p class="lead mt-sm" style="max-width:620px">
         Grupos y comunidades que forman parte de Argyra. Argyra acompaña a uno por vez: los
         demás esperan su turno con el trabajo ya definido.
       </p>
-
-      <div class="filters mt-lg" id="filtros">
-        <button class="chip active" data-filter="todos">Todos</button>
-        <button class="chip" data-filter="in_progress">En proceso</button>
-        <button class="chip" data-filter="approved">En espera</button>
-        <button class="chip" data-filter="completed">Resueltos</button>
-        <button class="chip" data-filter="comunidad">Comunidades</button>
-        <button class="chip" data-filter="grupo">Grupos</button>
-      </div>
-
-      <div id="lista" class="mt-md"><p class="loading">Cargando afiliados…</p></div>
+      <div id="lista" class="mt-lg"><p class="loading">Cargando afiliados…</p></div>
     </section>
   </main>
 
@@ -46,19 +57,15 @@
     <div class="container footer__inner">
       <p>Argyra — comunidad de comunidades.</p>
       <div class="footer__links">
-        <a href="afiliados.html">Afiliados</a>
+        <a href="comunidades.html">Comunidades</a>
+        <a href="grupos.html">Grupos</a>
+        <a href="progreso.html">En proceso</a>
+        <a href="resultados.html">Resultados</a>
         <a href="laboratorio.html">Laboratorio</a>
         <a href="solicitar.html">Solicitar apoyo</a>
-        <a href="ingresar.html">Ingresar</a>
       </div>
     </div>
   </footer>
-  <nav class="tabbar">
-    <a href="index.html"><span class="tabbar__dot"></span>Argyra</a>
-    <a href="afiliados.html"><span class="tabbar__dot"></span>Afiliados</a>
-    <a href="laboratorio.html"><span class="tabbar__dot"></span>Lab</a>
-    <a href="panel.html"><span class="tabbar__dot"></span>Panel</a>
-  </nav>
 
   <script type="module" src="js/page-afiliados.js"></script>
 </body>

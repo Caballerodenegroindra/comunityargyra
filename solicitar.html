@@ -11,43 +11,141 @@
 </head>
 <body>
   <header class="navbar">
+    <button class="navbar__toggle" id="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+
     <a href="index.html" class="navbar__brand"><span class="wordmark sheen">ARGYRA</span></a>
-    <nav class="navbar__links">
-      <a href="afiliados.html">Afiliados</a>
-      <a href="laboratorio.html">Laboratorio</a>
+
+    <nav class="navbar__links" id="menu">
+      <p class="eyebrow navbar__group">Argyra</p>
+      <a href="index.html">Inicio</a>
+      <a href="laboratorio.html">El Laboratorio</a>
+
+      <p class="eyebrow navbar__group">Afiliados</p>
+      <a href="afiliados.html">Todos los afiliados</a>
+      <a href="comunidades.html">Comunidades</a>
+      <a href="grupos.html">Grupos</a>
+
+      <p class="eyebrow navbar__group">Seguimiento</p>
+      <a href="progreso.html">En proceso</a>
+      <a href="resultados.html">Resultados</a>
+
+      <p class="eyebrow navbar__group">Tu cuenta</p>
       <a href="solicitar.html">Solicitar apoyo</a>
+      <a href="panel.html">Mi panel</a>
+
+      <div class="navbar__session">
+        <a class="btn btn--primary" data-session-slot href="ingresar.html">Ingresar</a>
+      </div>
     </nav>
-    <a class="navbar__session" data-session-slot href="ingresar.html">Ingresar</a>
   </header>
 
   <main>
     <section class="container section" style="max-width:680px">
       <p class="eyebrow">Paso 1 de 3</p>
       <h1 class="mt-sm">Reglas y permisos</h1>
-      <p class="lead mt-sm">Antes de continuar, revisa lo que aceptas al pedir acompañamiento.</p>
+      <p class="lead mt-sm">
+        Argyra es una comunidad privada. Antes de continuar, lee con calma lo que aceptas:
+        no son formalidades, se aplican de verdad.
+      </p>
 
       <div class="stack mt-lg">
         <div class="card">
-          <h3>Reglas</h3>
-          <ul class="bullets mt-sm">
-            <li>Respetar a los miembros.</li>
-            <li>Proporcionar información real.</li>
-            <li>Cumplir los acuerdos establecidos.</li>
+          <h3>Reglas de la comunidad privada</h3>
+          <p class="small text-soft">
+            Estas tres reglas sostienen todo lo demás. <strong style="color:var(--silver)">Si una
+            se rompe, la persona queda eliminada de la comunidad de inmediato</strong>, sin
+            advertencia previa y sin proceso de apelación.
+          </p>
+
+          <ul class="list divided mt-md">
+            <li>
+              <h3>Respetar a los miembros</h3>
+              <p class="small text-soft mt-sm">
+                Sin insultos, acoso, discriminación ni humillaciones. Tampoco de manera
+                indirecta ni en privado. Aquí trabaja gente que dedica su tiempo libre a su
+                comunidad: se les trata en consecuencia.
+              </p>
+            </li>
+            <li>
+              <h3>Proporcionar información real</h3>
+              <p class="small text-soft mt-sm">
+                Tu nick, tu WhatsApp, tu grupo y tu rol dentro de él deben ser verdaderos.
+                Argyra dedica trabajo real a cada afiliado: mentir sobre quién eres o qué
+                administras hace perder ese trabajo a todos los que esperan turno.
+              </p>
+            </li>
+            <li>
+              <h3>Cumplir los acuerdos establecidos</h3>
+              <p class="small text-soft mt-sm">
+                Lo que se acuerda con los líderes se cumple: plazos, tareas y compromisos.
+                Si algo cambia o no puedes seguir, se avisa. Abandonar el proceso sin decir
+                nada bloquea la cola para el resto.
+              </p>
+            </li>
           </ul>
         </div>
+
         <div class="card">
-          <h3>Permisos</h3>
-          <ul class="bullets mt-sm">
-            <li>Autorizar la revisión administrativa.</li>
-            <li>Permitir la verificación del grupo.</li>
-            <li>Aceptar las condiciones de apoyo.</li>
+          <h3>Permisos que otorgas</h3>
+          <p class="small text-soft">
+            Para acompañarte de verdad necesitamos acceso real a tu grupo. Esto es lo que
+            significa cada permiso.
+          </p>
+
+          <ul class="list divided mt-md">
+            <li>
+              <h3>Autorizar la revisión administrativa</h3>
+              <p class="small text-soft mt-sm">
+                Significa que <strong style="color:var(--silver)">debes otorgar
+                administración a uno de los líderes de Argyra dentro de tu grupo</strong>.
+                Es un requisito para ser aceptado, no una opción.
+              </p>
+              <p class="small text-soft mt-sm">
+                Sin ese acceso no podemos ver la configuración real, ajustar permisos,
+                instalar automatizaciones ni comprobar que los cambios funcionaron. El líder
+                usa ese rol únicamente para el trabajo acordado contigo, y puedes retirarlo
+                cuando el apoyo termine.
+              </p>
+            </li>
+            <li>
+              <h3>Permitir la verificación del grupo</h3>
+              <p class="small text-soft mt-sm">
+                La verificación es la comprobación de que el grupo existe y de que
+                efectivamente lo administras tú. Se hace por WhatsApp, hablando directamente
+                con los líderes de Argyra.
+              </p>
+              <p class="small text-soft mt-sm">
+                Puede incluir mostrar la lista de administradores, entrar al grupo para
+                confirmarlo o coordinar una comprobación en vivo. Hasta que pase, tu ficha no
+                se publica en el directorio. Es lo que evita que alguien pida apoyo para un
+                grupo que no le pertenece.
+              </p>
+            </li>
+            <li>
+              <h3>Aceptar las condiciones de apoyo</h3>
+              <p class="small text-soft mt-sm">
+                El acompañamiento es colaborativo, no un servicio que se encarga y se espera.
+                Aceptas participar en el proceso: responder cuando se te consulta, aplicar lo
+                acordado y sostener los cambios después.
+              </p>
+              <p class="small text-soft mt-sm">
+                También aceptas que Argyra atiende a un afiliado por vez, que tu ficha y tus
+                metas son públicas una vez aprobado, y que el avance lo registra el equipo
+                según lo que realmente se cumplió.
+              </p>
+            </li>
           </ul>
         </div>
       </div>
 
       <label class="checkbox-row mt-lg">
         <input type="checkbox" id="acepto" />
-        <span class="small">He leído y acepto las reglas y permisos.</span>
+        <span class="small">
+          He leído y acepto las reglas y permisos, incluyendo que romper una regla implica la
+          eliminación inmediata de la comunidad.
+        </span>
       </label>
 
       <button class="btn btn--primary mt-md" id="continuar" disabled>Continuar</button>
@@ -58,19 +156,15 @@
     <div class="container footer__inner">
       <p>Argyra — comunidad de comunidades.</p>
       <div class="footer__links">
-        <a href="afiliados.html">Afiliados</a>
+        <a href="comunidades.html">Comunidades</a>
+        <a href="grupos.html">Grupos</a>
+        <a href="progreso.html">En proceso</a>
+        <a href="resultados.html">Resultados</a>
         <a href="laboratorio.html">Laboratorio</a>
         <a href="solicitar.html">Solicitar apoyo</a>
-        <a href="ingresar.html">Ingresar</a>
       </div>
     </div>
   </footer>
-  <nav class="tabbar">
-    <a href="index.html"><span class="tabbar__dot"></span>Argyra</a>
-    <a href="afiliados.html"><span class="tabbar__dot"></span>Afiliados</a>
-    <a href="laboratorio.html"><span class="tabbar__dot"></span>Lab</a>
-    <a href="panel.html"><span class="tabbar__dot"></span>Panel</a>
-  </nav>
 
   <script type="module" src="js/page-solicitar.js"></script>
 </body>

@@ -90,6 +90,8 @@ service cloud.firestore {
         && request.resource.data.name.size() >= 3
         && request.resource.data.name.size() <= 60
         && request.resource.data.ownerNick is string
+        && request.resource.data.joinUrl is string
+        && request.resource.data.joinUrl.size() > 0
         && request.resource.data.requestedAreas.size() > 0
         && request.resource.data.requestedAreas.size() <= 7;
 

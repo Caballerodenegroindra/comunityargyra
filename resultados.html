@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#090B0F" />
-  <title>Solicitud enviada — Argyra</title>
-  <meta name="description" content="Tu solicitud quedó registrada en Argyra." />
+  <title>Resultados — Argyra</title>
+  <meta name="description" content="Acompañamientos ya resueltos por Argyra." />
   <link rel="icon" type="image/svg+xml" href="assets/img/icon.svg" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -42,35 +42,15 @@
   </header>
 
   <main>
-    <section class="container section" style="max-width:680px">
-      <p class="eyebrow">Solicitud enviada</p>
-      <h1 class="mt-sm">Solicitud enviada correctamente</h1>
-      <p class="lead mt-sm">
-        Tu solicitud está pendiente de revisión. Para continuar debes ingresar al grupo
-        oficial de WhatsApp de Argyra. Tu ficha se hace pública cuando el equipo verifica
-        que administras el grupo.
+    <section class="container section">
+      <p class="eyebrow">Seguimiento</p>
+      <h1 class="mt-sm">Resultados</h1>
+      <p class="lead mt-sm" style="max-width:620px">
+        Los acompañamientos que ya terminaron. Cada ficha queda como historial público: qué
+        se pidió, qué metas se fijaron y cuáles se cumplieron.
       </p>
-
-      <div class="card mt-lg">
-        <h3>Grupo oficial</h3>
-        <div class="btn-row mt-md">
-          <a class="btn btn--primary" id="wa" target="_blank" rel="noopener">Unirse con WhatsApp</a>
-          <a class="btn btn--secondary" id="wab" target="_blank" rel="noopener">Unirse con WhatsApp Business</a>
-        </div>
-        <button class="btn btn--secondary btn--block mt-sm" id="copiar">Copiar enlace</button>
-      </div>
-
-      <div class="card mt-sm">
-        <h3>Una vez dentro del grupo</h3>
-        <ol class="steps mt-sm">
-          <li><span class="steps__n">01</span>Menciona tu usuario registrado.</li>
-          <li><span class="steps__n">02</span>Indica el nombre de tu grupo o comunidad.</li>
-          <li><span class="steps__n">03</span>Espera la revisión de los líderes.</li>
-          <li><span class="steps__n">04</span>Completa las verificaciones necesarias.</li>
-        </ol>
-      </div>
-
-      <a class="btn btn--secondary mt-lg" href="panel.html">Ir a mi panel</a>
+      <div class="card mt-lg" id="resumen"><p class="loading">Cargando…</p></div>
+      <div id="lista" class="mt-md"></div>
     </section>
   </main>
 
@@ -88,6 +68,6 @@
     </div>
   </footer>
 
-  <script type="module" src="js/page-enviada.js"></script>
+  <script type="module" src="js/page-resultados.js"></script>
 </body>
 </html>

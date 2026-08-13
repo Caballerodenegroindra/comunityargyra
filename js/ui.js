@@ -82,9 +82,8 @@ export function formatDate(value) {
    ------------------------------------------------------------ */
 export function markActiveNav() {
   const page = location.pathname.split('/').pop() || 'index.html';
-  $$('.navbar__links a, .tabbar a').forEach((link) => {
-    const href = link.getAttribute('href');
-    if (href === page) link.classList.add('active');
+  $$('.navbar__links a').forEach((link) => {
+    if (link.getAttribute('href') === page) link.classList.add('active');
   });
 }
 

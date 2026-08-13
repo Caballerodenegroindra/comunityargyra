@@ -21,17 +21,25 @@ import {
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 
 export async function registerUser({ nick, email, whatsapp, password }) {
+  /* La cuenta se crea primero en Authentication. Si después falla la
+     escritura en Firestore, la cuenta ya existe: por eso el mensaje de
+     error tiene que distinguir un caso del otro. */
   const credential = await createUserWithEmailAndPassword(auth, email, password);
 
-  await setDoc(doc(db, COL.users, credential.user.uid), {
-    uid: credential.user.uid,
-    nick,
-    email,
-    whatsapp,
-    role: 'user',
-    status: 'pending',
-    createdAt: serverTimestamp(),
-  });
+  try {
+    await setDoc(doc(db, COL.users, credential.user.uid), {
+      uid: credential.user.uid,
+      nick,
+      email,
+      whatsapp,
+      role: 'user',
+      status: 'pending',
+      createdAt: serverTimestamp(),
+    });
+  } catch (error) {
+    error.afterAccountCreated = true;
+    throw error;
+  }
 
   return credential.user;
 }
@@ -116,8 +124,14 @@ export function paintSessionLink() {
   });
 }
 
-/* Traduce los errores de Firebase a algo que se entienda. */
+/* Traduce los errores de Firebase a algo que se entienda.
+   Los de permisos son los más frecuentes al empezar: pasan cuando las
+   reglas de firestore.rules todavía no se publicaron. */
 export function authErrorMessage(error) {
+  if (error?.code === 'permission-denied' || /permission/i.test(error?.message || '')) {
+    return 'La base de datos rechazó la operación. Falta publicar firestore.rules en la consola de Firebase.';
+  }
+
   const messages = {
     'auth/email-already-in-use': 'Ese correo ya tiene una cuenta. Ingresa con tu contraseña.',
     'auth/invalid-credential': 'Correo o contraseña incorrectos.',

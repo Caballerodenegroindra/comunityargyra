@@ -11,13 +11,34 @@
 </head>
 <body>
   <header class="navbar">
+    <button class="navbar__toggle" id="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+
     <a href="index.html" class="navbar__brand"><span class="wordmark sheen">ARGYRA</span></a>
-    <nav class="navbar__links">
-      <a href="afiliados.html">Afiliados</a>
-      <a href="laboratorio.html">Laboratorio</a>
+
+    <nav class="navbar__links" id="menu">
+      <p class="eyebrow navbar__group">Argyra</p>
+      <a href="index.html">Inicio</a>
+      <a href="laboratorio.html">El Laboratorio</a>
+
+      <p class="eyebrow navbar__group">Afiliados</p>
+      <a href="afiliados.html">Todos los afiliados</a>
+      <a href="comunidades.html">Comunidades</a>
+      <a href="grupos.html">Grupos</a>
+
+      <p class="eyebrow navbar__group">Seguimiento</p>
+      <a href="progreso.html">En proceso</a>
+      <a href="resultados.html">Resultados</a>
+
+      <p class="eyebrow navbar__group">Tu cuenta</p>
       <a href="solicitar.html">Solicitar apoyo</a>
+      <a href="panel.html">Mi panel</a>
+
+      <div class="navbar__session">
+        <a class="btn btn--primary" data-session-slot href="ingresar.html">Ingresar</a>
+      </div>
     </nav>
-    <a class="navbar__session" data-session-slot href="ingresar.html">Ingresar</a>
   </header>
 
   <main>
@@ -68,21 +89,55 @@
       <div class="card-grid">
         <div class="card">
           <p class="eyebrow">Directorio</p>
-          <h3 class="mt-sm">Afiliados</h3>
+          <h3 class="mt-sm">Comunidades</h3>
           <p class="small text-soft">
-            Todos los grupos y comunidades de Argyra: qué apoyo pidieron, quién lo pidió y si
-            ya se resolvió. Cada uno con su ficha, sus metas y su avance.
+            Las que reúnen varios grupos bajo una misma administración, con su ficha, sus
+            metas y su avance.
           </p>
-          <a class="btn btn--secondary btn--sm mt-md" href="afiliados.html">Ver directorio</a>
+          <a class="btn btn--secondary btn--sm mt-md" href="comunidades.html">Ver comunidades</a>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Directorio</p>
+          <h3 class="mt-sm">Grupos</h3>
+          <p class="small text-soft">
+            Grupos independientes, cada uno con su administrador. Reciben el mismo
+            acompañamiento.
+          </p>
+          <a class="btn btn--secondary btn--sm mt-md" href="grupos.html">Ver grupos</a>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Seguimiento</p>
+          <h3 class="mt-sm">En proceso</h3>
+          <p class="small text-soft">
+            Quién recibe apoyo ahora mismo y quiénes esperan turno, con el avance de cada uno.
+          </p>
+          <a class="btn btn--secondary btn--sm mt-md" href="progreso.html">Ver la cola</a>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Seguimiento</p>
+          <h3 class="mt-sm">Resultados</h3>
+          <p class="small text-soft">
+            Los acompañamientos terminados: qué se pidió, qué metas se fijaron y cuáles se
+            cumplieron.
+          </p>
+          <a class="btn btn--secondary btn--sm mt-md" href="resultados.html">Ver resultados</a>
         </div>
         <div class="card">
           <p class="eyebrow">Dentro de Argyra</p>
           <h3 class="mt-sm">El Laboratorio</h3>
           <p class="small text-soft">
             Lo que construimos: bots, aplicaciones y sitios. Los terminados se pueden
-            descargar o usar, y los que están en curso muestran su avance.
+            descargar o usar.
           </p>
           <a class="btn btn--secondary btn--sm mt-md" href="laboratorio.html">Entrar al Laboratorio</a>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Tu grupo</p>
+          <h3 class="mt-sm">Solicitar apoyo</h3>
+          <p class="small text-soft">
+            Si administras un grupo o una comunidad, puedes pedir acompañamiento hoy mismo.
+          </p>
+          <a class="btn btn--primary btn--sm mt-md" href="solicitar.html">Empezar</a>
         </div>
       </div>
     </section>
@@ -92,19 +147,15 @@
     <div class="container footer__inner">
       <p>Argyra — comunidad de comunidades.</p>
       <div class="footer__links">
-        <a href="afiliados.html">Afiliados</a>
+        <a href="comunidades.html">Comunidades</a>
+        <a href="grupos.html">Grupos</a>
+        <a href="progreso.html">En proceso</a>
+        <a href="resultados.html">Resultados</a>
         <a href="laboratorio.html">Laboratorio</a>
         <a href="solicitar.html">Solicitar apoyo</a>
-        <a href="ingresar.html">Ingresar</a>
       </div>
     </div>
   </footer>
-  <nav class="tabbar">
-    <a href="index.html"><span class="tabbar__dot"></span>Argyra</a>
-    <a href="afiliados.html"><span class="tabbar__dot"></span>Afiliados</a>
-    <a href="laboratorio.html"><span class="tabbar__dot"></span>Lab</a>
-    <a href="panel.html"><span class="tabbar__dot"></span>Panel</a>
-  </nav>
 
   <script type="module" src="js/page-index.js"></script>
 </body>

@@ -1,8 +1,12 @@
-/* Paso 2: lista las áreas desde el modelo, para no duplicar texto. */
+/* Paso 2: las áreas salen del modelo, con su descripción. */
 import './page-shell.js';
 import { esc } from './ui.js';
-import { SUPPORT_AREAS } from './model.js';
+import { SUPPORT_AREAS, SUPPORT_AREA_DESC } from './model.js';
 
-document.getElementById('areas').innerHTML = Object.values(SUPPORT_AREAS)
-  .map((label) => `<li class="tag">${esc(label)}</li>`)
+document.getElementById('areas').innerHTML = Object.entries(SUPPORT_AREAS)
+  .map(([key, label]) => `
+    <li>
+      <h3>${esc(label)}</h3>
+      <p class="small text-soft mt-sm">${esc(SUPPORT_AREA_DESC[key] || '')}</p>
+    </li>`)
   .join('');

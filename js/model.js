@@ -58,6 +58,18 @@ export const SUPPORT_AREAS = {
   actividades:    'Actividades',
 };
 
+/* Qué hace Argyra en cada área. Se usa en la portada, en la página del
+   programa y en el formulario, para que la explicación no se contradiga. */
+export const SUPPORT_AREA_DESC = {
+  administracion: 'Ordenamos roles y permisos, definimos quién decide qué y dejamos por escrito cómo se resuelven los conflictos.',
+  organizacion:   'Estructuramos temas, canales y horarios para que nadie tenga que adivinar dónde va cada cosa.',
+  crecimiento:    'Formas sanas de sumar miembros y de que se queden: bienvenida, actividades y seguimiento real.',
+  diseno:         'Perfil, descripción, logo e identidad visual para que tu grupo se entienda en cinco segundos.',
+  automatizacion: 'Lo repetitivo deja de hacerse a mano: bienvenidas, avisos, respuestas y moderación básica.',
+  moderacion:     'Reglas claras, criterios parejos y un equipo que sabe qué hacer cuando algo se desborda.',
+  actividades:    'Dinámicas, retos y eventos con un calendario que se sostiene en el tiempo.',
+};
+
 /* Tono de color de cada estado, para las insignias. */
 const TONES = {
   waiting: '', verifying: 'wait', pending: 'wait', approved: 'wait',

@@ -1,4 +1,5 @@
-/* Base de toda página: marca el enlace activo y pinta el botón de sesión. */
+/* Base de toda página: menú, enlace activo y botón de sesión. */
+import './menu.js';
 import { markActiveNav } from './ui.js';
 import { paintSessionLink } from './auth.js';
 

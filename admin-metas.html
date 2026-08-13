@@ -11,13 +11,34 @@
 </head>
 <body>
   <header class="navbar">
+    <button class="navbar__toggle" id="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+
     <a href="index.html" class="navbar__brand"><span class="wordmark sheen">ARGYRA</span></a>
-    <nav class="navbar__links">
-      <a href="afiliados.html">Afiliados</a>
-      <a href="laboratorio.html">Laboratorio</a>
+
+    <nav class="navbar__links" id="menu">
+      <p class="eyebrow navbar__group">Argyra</p>
+      <a href="index.html">Inicio</a>
+      <a href="laboratorio.html">El Laboratorio</a>
+
+      <p class="eyebrow navbar__group">Afiliados</p>
+      <a href="afiliados.html">Todos los afiliados</a>
+      <a href="comunidades.html">Comunidades</a>
+      <a href="grupos.html">Grupos</a>
+
+      <p class="eyebrow navbar__group">Seguimiento</p>
+      <a href="progreso.html">En proceso</a>
+      <a href="resultados.html">Resultados</a>
+
+      <p class="eyebrow navbar__group">Tu cuenta</p>
       <a href="solicitar.html">Solicitar apoyo</a>
+      <a href="panel.html">Mi panel</a>
+
+      <div class="navbar__session">
+        <a class="btn btn--primary" data-session-slot href="ingresar.html">Ingresar</a>
+      </div>
     </nav>
-    <a class="navbar__session" data-session-slot href="ingresar.html">Ingresar</a>
   </header>
 
   <main>
@@ -57,19 +78,15 @@
     <div class="container footer__inner">
       <p>Argyra — comunidad de comunidades.</p>
       <div class="footer__links">
-        <a href="afiliados.html">Afiliados</a>
+        <a href="comunidades.html">Comunidades</a>
+        <a href="grupos.html">Grupos</a>
+        <a href="progreso.html">En proceso</a>
+        <a href="resultados.html">Resultados</a>
         <a href="laboratorio.html">Laboratorio</a>
         <a href="solicitar.html">Solicitar apoyo</a>
-        <a href="ingresar.html">Ingresar</a>
       </div>
     </div>
   </footer>
-  <nav class="tabbar">
-    <a href="index.html"><span class="tabbar__dot"></span>Argyra</a>
-    <a href="afiliados.html"><span class="tabbar__dot"></span>Afiliados</a>
-    <a href="laboratorio.html"><span class="tabbar__dot"></span>Lab</a>
-    <a href="panel.html"><span class="tabbar__dot"></span>Panel</a>
-  </nav>
 
   <script type="module" src="js/page-admin-metas.js"></script>
 </body>
