@@ -46,7 +46,7 @@
   --maxw: 1000px;
 
   /* Aire lateral: el texto nunca toca el borde de la pantalla. */
-  --pad-x: 1.5rem;
+  --pad-x: 1.25rem;
 }
 
 /* ============================================================
@@ -105,7 +105,8 @@ img { max-width: 100%; display: block; }
 .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad-x); }
 
 /* En pantallas anchas el texto respira todavía más. */
-@media (min-width: 720px) { :root { --pad-x: 2rem; } }
+@media (min-width: 400px)  { :root { --pad-x: 1.5rem; } }
+@media (min-width: 720px)  { :root { --pad-x: 2.25rem; } }
 .section   { padding: var(--gap-xl) 0; }
 .section + .section { border-top: 1px solid var(--edge); }
 
@@ -270,7 +271,7 @@ body.nav-open { overflow: hidden; }
   background: var(--surface);
   border: 1px solid var(--edge);
   border-radius: var(--radius);
-  padding: 1.25rem;
+  padding: 1.5rem;
   overflow: hidden;
 }
 
@@ -634,3 +635,69 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
   gap: 0.75rem;
   margin-bottom: 1.25rem;
 }
+
+/* ============================================================
+   CÓMO FUNCIONA — diagrama simple para la portada
+   Un círculo numerado por paso, conectados por una línea vertical.
+   Nada de párrafos largos: una frase corta y clara por paso.
+   ============================================================ */
+.howto { list-style: none; margin: 0; padding: 0; max-width: 480px; }
+
+.howto li {
+  position: relative;
+  display: flex;
+  gap: 1.1rem;
+  padding-bottom: 2rem;
+}
+.howto li:last-child { padding-bottom: 0; }
+
+/* La línea que une un paso con el siguiente */
+.howto li:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 21px;
+  top: 44px;
+  bottom: 0;
+  width: 1px;
+  background: var(--edge);
+}
+
+.howto__n {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--raise);
+  border: 1px solid var(--edge);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--accent);
+  z-index: 1;
+}
+
+.howto__body { padding-top: 0.5rem; }
+.howto__body h3 { font-size: 1.05rem; }
+.howto__body p { margin-top: 0.35rem; color: var(--muted); font-size: 0.9rem; }
+
+/* Dos botones grandes, uno al lado del otro, para entrar a lo principal */
+.gateway {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 560px) { .gateway { grid-template-columns: 1fr 1fr; } }
+
+.gateway a {
+  display: block;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: border-color .15s;
+}
+.gateway a:hover { border-color: var(--accent-line); text-decoration: none; }
+.gateway a .eyebrow { color: var(--accent); }
+.gateway a h3 { margin-top: 0.5rem; }
+.gateway a p { margin-top: 0.5rem; color: var(--muted); font-size: 0.9rem; }
