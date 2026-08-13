@@ -1,0 +1,151 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ---------- Helpers ----------
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isSelf(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function userDoc() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function isAdmin() {
+      return signedIn() && userDoc().role == 'admin';
+    }
+
+    function notSuspended() {
+      return signedIn() && userDoc().status != 'suspended';
+    }
+
+    function affiliateDoc(id) {
+      return get(/databases/$(database)/documents/affiliates/$(id)).data;
+    }
+
+    function ownsAffiliate(id) {
+      return signedIn()
+        && exists(/databases/$(database)/documents/affiliates/$(id))
+        && affiliateDoc(id).ownerUid == request.auth.uid;
+    }
+
+    function keepsUserFields(before, after) {
+      return after.role == before.role
+        && after.status == before.status
+        && after.uid == before.uid
+        && after.email == before.email
+        && after.createdAt == before.createdAt;
+    }
+
+    // Lo que solo el equipo de Argyra decide.
+    function keepsAffiliateFields(before, after) {
+      return after.ownerUid == before.ownerUid
+        && after.status == before.status
+        && after.isAdminVerified == before.isAdminVerified
+        && after.progress == before.progress
+        && after.requestedAreas == before.requestedAreas
+        && after.createdAt == before.createdAt;
+    }
+
+    // ---------- users ----------
+    match /users/{uid} {
+      allow read: if isSelf(uid) || isAdmin();
+
+      allow create: if isSelf(uid)
+        && request.resource.data.uid == uid
+        && request.resource.data.role == 'user'
+        && request.resource.data.status == 'pending'
+        && request.resource.data.nick is string
+        && request.resource.data.nick.size() >= 3
+        && request.resource.data.nick.size() <= 24
+        && request.resource.data.whatsapp is string
+        && request.resource.data.email == request.auth.token.email;
+
+      allow update: if isAdmin()
+        || (isSelf(uid) && notSuspended()
+            && keepsUserFields(resource.data, request.resource.data));
+
+      allow delete: if isAdmin();
+    }
+
+    // ---------- affiliates ----------
+    // Grupos y comunidades. El directorio es publico una vez aceptados.
+    match /affiliates/{affiliateId} {
+      allow read: if resource.data.status in ['approved', 'in_progress', 'completed']
+        || isAdmin()
+        || isSelf(resource.data.ownerUid);
+
+      // Se crea durante el registro, con el usuario todavia en 'pending'.
+      allow create: if isSelf(request.resource.data.ownerUid)
+        && request.resource.data.status == 'waiting'
+        && request.resource.data.isAdminVerified == false
+        && request.resource.data.progress == 0
+        && request.resource.data.kind in ['comunidad', 'grupo']
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 3
+        && request.resource.data.name.size() <= 60
+        && request.resource.data.ownerNick is string
+        && request.resource.data.requestedAreas.size() > 0
+        && request.resource.data.requestedAreas.size() <= 7;
+
+      // El dueno mantiene su ficha; el estado y el avance son del equipo.
+      allow update: if isAdmin()
+        || (isSelf(resource.data.ownerUid) && notSuspended()
+            && keepsAffiliateFields(resource.data, request.resource.data));
+
+      allow delete: if isAdmin();
+    }
+
+    // ---------- goals ----------
+    // Las metas son publicas desde que se fijan: cualquiera sigue el avance.
+    match /goals/{goalId} {
+      allow read: if true;
+
+      // Las fija el afiliado; tambien puede crearlas el equipo.
+      allow create: if isAdmin()
+        || (ownsAffiliate(request.resource.data.affiliateId)
+            && notSuspended()
+            && request.resource.data.progress == 0
+            && request.resource.data.status == 'pending'
+            && request.resource.data.title is string
+            && request.resource.data.title.size() >= 3);
+
+      // El avance lo registra solo Argyra. El dueno corrige el texto
+      // mientras la meta no haya empezado.
+      allow update: if isAdmin()
+        || (ownsAffiliate(resource.data.affiliateId)
+            && resource.data.progress == 0
+            && request.resource.data.progress == 0
+            && request.resource.data.status == resource.data.status
+            && request.resource.data.affiliateId == resource.data.affiliateId);
+
+      allow delete: if isAdmin()
+        || (ownsAffiliate(resource.data.affiliateId) && resource.data.progress == 0);
+    }
+
+    // ---------- requests ----------
+    // El campo notes son los comentarios del equipo hacia el solicitante.
+    match /requests/{requestId} {
+      allow read: if isAdmin() || isSelf(resource.data.userId);
+      allow create: if isSelf(request.resource.data.userId)
+        && request.resource.data.status == 'pending';
+      allow update, delete: if isAdmin();
+    }
+
+    // ---------- projects ----------
+    // El Laboratorio es una vitrina: se lee sin cuenta, se edita solo el equipo.
+    match /projects/{projectId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

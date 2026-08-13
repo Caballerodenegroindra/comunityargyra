@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#090B0F" />
+  <title>Crear solicitud — Argyra</title>
+  <meta name="description" content="Registro de grupos y comunidades en Argyra." />
+  <link rel="icon" type="image/svg+xml" href="assets/img/icon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html" class="navbar__brand"><span class="wordmark sheen">ARGYRA</span></a>
+    <nav class="navbar__links">
+      <a href="afiliados.html">Afiliados</a>
+      <a href="laboratorio.html">Laboratorio</a>
+      <a href="solicitar.html">Solicitar apoyo</a>
+    </nav>
+    <a class="navbar__session" data-session-slot href="ingresar.html">Ingresar</a>
+  </header>
+
+  <main>
+    <section class="container section" style="max-width:520px">
+      <p class="eyebrow">Paso 3 de 3</p>
+      <h1 class="mt-sm">Crear solicitud</h1>
+      <p class="lead small mt-sm">Estos datos formarán tu ficha pública dentro de Argyra.</p>
+
+      <form id="form" class="mt-lg" novalidate>
+        <div class="field">
+          <span class="field__label">¿Qué administras?</span>
+          <span class="field__hint">Una comunidad contiene varios grupos.</span>
+          <div class="chips" id="tipo">
+            <button type="button" class="chip active" data-kind="grupo">Grupo</button>
+            <button type="button" class="chip" data-kind="comunidad">Comunidad</button>
+          </div>
+        </div>
+
+        <label class="field">
+          <span class="field__label">Nombre del grupo o comunidad</span>
+          <input class="input" name="name" placeholder="Grupo Alpha" required />
+          <span class="field__error" data-error="name"></span>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Descripción</span>
+          <span class="field__hint">De qué trata, para quién es y qué se hace ahí.</span>
+          <textarea class="textarea" name="description" rows="4"
+            placeholder="Comunidad de ilustradores que comparte recursos y organiza retos mensuales."></textarea>
+          <span class="field__error" data-error="description"></span>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Enlace para unirse</span>
+          <span class="field__hint">Opcional. Puedes agregarlo o cambiarlo después.</span>
+          <input class="input" name="joinUrl" placeholder="https://chat.whatsapp.com/…" />
+          <span class="field__error" data-error="joinUrl"></span>
+        </label>
+
+        <div class="field">
+          <span class="field__label">¿En qué necesitas apoyo?</span>
+          <span class="field__hint">Esto queda fijo: es el apoyo que Argyra registra en tu ficha.</span>
+          <div class="chips" id="areas"></div>
+          <span class="field__error" data-error="requestedAreas"></span>
+        </div>
+
+        <div class="field" style="border-top:1px solid var(--edge);padding-top:1.5rem">
+          <span class="eyebrow">Tu cuenta</span>
+        </div>
+
+        <label class="field">
+          <span class="field__label">Nick o sobrenombre</span>
+          <span class="field__hint">Debe ser real, sin emojis ni símbolos.</span>
+          <input class="input" name="nick" autocomplete="nickname" placeholder="Camila" />
+          <span class="field__error" data-error="nick"></span>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Número de WhatsApp</span>
+          <span class="field__hint">Con código de país.</span>
+          <input class="input" name="whatsapp" type="tel" inputmode="tel" placeholder="+5491122334455" />
+          <span class="field__error" data-error="whatsapp"></span>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Correo electrónico</span>
+          <span class="field__hint">Lo usarás para recuperar tu cuenta.</span>
+          <input class="input" name="email" type="email" inputmode="email" autocomplete="email" />
+          <span class="field__error" data-error="email"></span>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Contraseña</span>
+          <span class="field__hint">Letras y números, mínimo 8 caracteres.</span>
+          <input class="input" name="password" type="password" autocomplete="new-password" />
+          <span class="field__error" data-error="password"></span>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Repetir contraseña</span>
+          <input class="input" name="confirm" type="password" autocomplete="new-password" />
+          <span class="field__error" data-error="confirm"></span>
+        </label>
+
+        <div id="aviso"></div>
+
+        <button class="btn btn--primary btn--block mt-md" type="submit" id="enviar">Crear solicitud</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>Argyra — comunidad de comunidades.</p>
+      <div class="footer__links">
+        <a href="afiliados.html">Afiliados</a>
+        <a href="laboratorio.html">Laboratorio</a>
+        <a href="solicitar.html">Solicitar apoyo</a>
+        <a href="ingresar.html">Ingresar</a>
+      </div>
+    </div>
+  </footer>
+  <nav class="tabbar">
+    <a href="index.html"><span class="tabbar__dot"></span>Argyra</a>
+    <a href="afiliados.html"><span class="tabbar__dot"></span>Afiliados</a>
+    <a href="laboratorio.html"><span class="tabbar__dot"></span>Lab</a>
+    <a href="panel.html"><span class="tabbar__dot"></span>Panel</a>
+  </nav>
+
+  <script type="module" src="js/page-registro.js"></script>
+</body>
+</html>

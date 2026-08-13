@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#090B0F" />
+  <title>Usuarios — Argyra</title>
+  <meta name="description" content="Gestión de usuarios de Argyra." />
+  <link rel="icon" type="image/svg+xml" href="assets/img/icon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html" class="navbar__brand"><span class="wordmark sheen">ARGYRA</span></a>
+    <nav class="navbar__links">
+      <a href="afiliados.html">Afiliados</a>
+      <a href="laboratorio.html">Laboratorio</a>
+      <a href="solicitar.html">Solicitar apoyo</a>
+    </nav>
+    <a class="navbar__session" data-session-slot href="ingresar.html">Ingresar</a>
+  </header>
+
+  <main>
+    <section class="container section">
+      <h1>Gestión de usuarios</h1>
+      <div class="filters mt-md">
+        <a class="chip" href="admin.html">Estadísticas</a>
+        <a class="chip active" href="admin-usuarios.html">Usuarios</a>
+        <a class="chip" href="admin-afiliados.html">Afiliados</a>
+        <a class="chip" href="admin-metas.html">Metas</a>
+        <a class="chip" href="admin-laboratorio.html">Laboratorio</a>
+      </div>
+
+      <div class="filters mt-md" id="filtros">
+        <button class="chip active" data-filter="all">Todos</button>
+        <button class="chip" data-filter="pending">Pendientes</button>
+        <button class="chip" data-filter="approved">Aprobados</button>
+        <button class="chip" data-filter="rejected">Rechazados</button>
+        <button class="chip" data-filter="suspended">Suspendidos</button>
+      </div>
+
+      <div id="lista" class="mt-md"><p class="loading">Cargando usuarios…</p></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>Argyra — comunidad de comunidades.</p>
+      <div class="footer__links">
+        <a href="afiliados.html">Afiliados</a>
+        <a href="laboratorio.html">Laboratorio</a>
+        <a href="solicitar.html">Solicitar apoyo</a>
+        <a href="ingresar.html">Ingresar</a>
+      </div>
+    </div>
+  </footer>
+  <nav class="tabbar">
+    <a href="index.html"><span class="tabbar__dot"></span>Argyra</a>
+    <a href="afiliados.html"><span class="tabbar__dot"></span>Afiliados</a>
+    <a href="laboratorio.html"><span class="tabbar__dot"></span>Lab</a>
+    <a href="panel.html"><span class="tabbar__dot"></span>Panel</a>
+  </nav>
+
+  <script type="module" src="js/page-admin-usuarios.js"></script>
+</body>
+</html>

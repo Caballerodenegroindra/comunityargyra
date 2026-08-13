@@ -1,0 +1,41 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    function validImage() {
+      return request.resource.size < 3 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+
+    // Logo de cada grupo o comunidad.
+    match /affiliates/{affiliateId}/{fileName} {
+      allow read: if true;
+      allow write: if isAdmin() || (signedIn() && validImage());
+    }
+
+    // Capturas de los proyectos del Laboratorio.
+    match /projects/{projectId}/{fileName} {
+      allow read: if true;
+      allow write: if isAdmin() && validImage();
+    }
+
+    match /users/{uid}/{fileName} {
+      allow read: if true;
+      allow write: if request.auth.uid == uid && validImage();
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
